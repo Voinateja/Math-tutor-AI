@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.example.org/math#"
+     xml:base="http://www.example.org/math"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:math="http://www.example.org/math#">
+
+    <owl:Ontology rdf:about="http://www.example.org/math"/>
+
+    <!-- Classes -->
+    <owl:Class rdf:about="http://www.example.org/math#Problem"/>
+    <owl:Class rdf:about="http://www.example.org/math#AlgebraProblem">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/math#Problem"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.example.org/math#GeometryProblem">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/math#Problem"/>
+    </owl:Class>
+    
+    <!-- New Classes -->
+    <owl:Class rdf:about="http://www.example.org/math#UserRegistration"/>
+    <owl:Class rdf:about="http://www.example.org/math#Progress"/>
+    <owl:Class rdf:about="http://www.example.org/math#SchoolGrade">
+        <owl:oneOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.example.org/math#ElementarySchool"/>
+            <rdf:Description rdf:about="http://www.example.org/math#MiddleSchool"/>
+            <rdf:Description rdf:about="http://www.example.org/math#HighSchool"/>
+        </owl:oneOf>
+    </owl:Class>
+
+    <!-- Properties -->
+    <owl:DatatypeProperty rdf:about="http://www.example.org/math#hasQuestion">
+        <rdfs:domain rdf:resource="http://www.example.org/math#Problem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/math#hasAnswer">
+        <rdfs:domain rdf:resource="http://www.example.org/math#Problem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/math#hasLevel">
+        <rdfs:domain rdf:resource="http://www.example.org/math#Problem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- New Properties -->
+    <owl:DatatypeProperty rdf:about="http://www.example.org/math#hasName">
+        <rdfs:domain rdf:resource="http://www.example.org/math#UserRegistration"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/math#hasGrade">
+        <rdfs:domain rdf:resource="http://www.example.org/math#UserRegistration"/>
+        <rdfs:range rdf:resource="http://www.example.org/math#SchoolGrade"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/math#hasProgress">
+        <rdfs:domain rdf:resource="http://www.example.org/math#UserRegistration"/>
+        <rdfs:range rdf:resource="http://www.example.org/math#Progress"/>
+    </owl:ObjectProperty>
+
+    <!-- Instances: Elementary School Problems -->
+    <math:AlgebraProblem rdf:about="http://www.example.org/math#ElementaryAlgebraEasy1">
+        <math:hasQuestion>What is 5 + 3?</math:hasQuestion>
+        <math:hasAnswer>8</math:hasAnswer>
+        <math:hasLevel>Easy</math:hasLevel>
+    </math:AlgebraProblem>
+
+    <math:AlgebraProblem rdf:about="http://www.example.org/math#ElementaryAlgebraEasy2">
+        <math:hasQuestion>What is 12 - 7?</math:hasQuestion>
+        <math:hasAnswer>5</math:hasAnswer>
+        <math:hasLevel>Easy</math:hasLevel>
+    </math:AlgebraProblem>
+
+    <math:GeometryProblem rdf:about="http://www.example.org/math#ElementaryGeometryEasy1">
+        <math:hasQuestion>How many sides does a triangle have?</math:hasQuestion>
+        <math:hasAnswer>3</math:hasAnswer>
+        <math:hasLevel>Easy</math:hasLevel>
+    </math:GeometryProblem>
+
+    <math:AlgebraProblem rdf:about="http://www.example.org/math#ElementaryAlgebraMedium1">
+        <math:hasQuestion>What is 6 * 4?</math:hasQuestion>
+        <math:hasAnswer>24</math:hasAnswer>
+        <math:hasLevel>Medium</math:hasLevel>
+    </math:AlgebraProblem>
+
+    <!-- Middle School Problems -->
+    <math:AlgebraProblem rdf:about="http://www.example.org/math#MiddleAlgebraMedium1">
+        <math:hasQuestion>Solve for x: x + 5 = 12</math:hasQuestion>
+        <math:hasAnswer>7</math:hasAnswer>
+        <math:hasLevel>Medium</math:hasLevel>
+    </math:AlgebraProblem>
+
+    <math:GeometryProblem rdf:about="http://www.example.org/math#MiddleGeometryMedium1">
+        <math:hasQuestion>Calculate the area of a rectangle with length 6 and width 4</math:hasQuestion>
+        <math:hasAnswer>24</math:hasAnswer>
+        <math:hasLevel>Medium</math:hasLevel>
+    </math:GeometryProblem>
+
+    <math:AlgebraProblem rdf:about="http://www.example.org/math#MiddleAlgebraMedium2">
+        <math:hasQuestion>Solve for x: 2x - 3 = 7</math:hasQuestion>
+        <math:hasAnswer>5</math:hasAnswer>
+        <math:hasLevel>Medium</math:hasLevel>
+    </math:AlgebraProblem>
+
+    <!-- High School Problems -->
+    <math:AlgebraProblem rdf:about="http://www.example.org/math#HighAlgebraMedium1">
+        <math:hasQuestion>Solve the quadratic equation: x^2 + 5x + 6 = 0</math:hasQuestion>
+        <math:hasAnswer>-2 or -3</math:hasAnswer>
+        <math:hasLevel>Medium</math:hasLevel>
+    </math:AlgebraProblem>
+
+    <math:GeometryProblem rdf:about="http://www.example.org/math#HighGeometryMedium1">
+        <math:hasQuestion>Find the volume of a sphere with radius 3</math:hasQuestion>
+        <math:hasAnswer>113.1</math:hasAnswer>
+        <math:hasLevel>Medium</math:hasLevel>
+    </math:GeometryProblem>
+
+    <!-- Existing Hard Problems from Previous Ontology -->
+    <math:AlgebraProblem rdf:about="http://www.example.org/math#AlgebraHard1">
+        <math:hasQuestion>Solve for x: 2x + 7 = 21</math:hasQuestion>
+        <math:hasAnswer>7</math:hasAnswer>
+        <math:hasLevel>Hard</math:hasLevel>
+    </math:AlgebraProblem>
+
+    <math:AlgebraProblem rdf:about="http://www.example.org/math#AlgebraHard2">
+        <math:hasQuestion>Solve for x: 3x - 4 = 2x + 6</math:hasQuestion>
+        <math:hasAnswer>10</math:hasAnswer>
+        <math:hasLevel>Hard</math:hasLevel>
+    </math:AlgebraProblem>
+
+    <math:GeometryProblem rdf:about="http://www.example.org/math#GeometryHard1">
+        <math:hasQuestion>Find the hypotenuse of a triangle with sides 3 and 4</math:hasQuestion>
+        <math:hasAnswer>5</math:hasAnswer>
+        <math:hasLevel>Hard</math:hasLevel>
+    </math:GeometryProblem>
+</rdf:RDF>
